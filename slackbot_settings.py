@@ -1,0 +1,8 @@
+import os
+
+#API_TOKEN = "xoxb-317997307782-388037724768-byYJMuxOra8Eyi2M3hCTHjZW"
+API_TOKEN = os.environ["PAPAYA_API_KEY"]
+
+DEFAULT_REPLY = "hey"
+
+PLUGINS = ['plugins']
