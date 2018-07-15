@@ -1,10 +1,15 @@
 # coding: utf-8
-
+import sys
 from slackbot.bot import Bot
+from plugins.device import Motor
 
 def main():
     bot = Bot()
-    bot.run()
+    try:
+        bot.run()
+    except KeyboardInterrupt:
+        Motor.finish()
+        sys.exit()
 
 
 
