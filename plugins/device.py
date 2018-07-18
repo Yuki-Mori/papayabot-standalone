@@ -1,17 +1,20 @@
 #coding: utf-8
+import RPi.GPIO as gpio
 
 motorPin = 37
 
 class Motor:
     def on(self):
-        #TODO
-        print("Motor On")
+        gpio.output(motorPin,True)
 
     def off(self):
-        #TODO
-        print("Motor Off")
+        gpio.output(motorPin,False)
 
     @staticmethod
     def finish():
-        #TODO
-        print("Motor Finish")
+        gpio.cleanup()
+
+    @staticmethod
+    def setup():
+        gpio.setmode(gpio.BOARD)
+        gpio.setup(motorPin,gpio.OUT)

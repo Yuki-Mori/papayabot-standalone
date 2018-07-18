@@ -4,6 +4,7 @@ from slackbot.bot import Bot
 from plugins.device import Motor
 
 def main():
+    Motor.setup()
     bot = Bot()
     try:
         bot.run()
