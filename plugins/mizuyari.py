@@ -7,6 +7,8 @@ from datetime import datetime
 from plugins import device
 import time
 
+timecount = 1
+
 class MizuyariThread(Thread):
     __count = 0
     def __init__(self,message):
@@ -24,9 +26,11 @@ class MizuyariThread(Thread):
         date = str(datetime.now())
         print("[slackbot][{date}][INFO][bot]: Start the mizuyari".format(date=date))
         motor = device.Motor()
-        motor.on()
-        time.sleep(10)
-        motor.off()
+        for _ in range(timecount):
+            motor.on()
+            time.sleep(6)
+            motor.off()
+            time.sleep(1)
         self._message.send("水やり終了")
         date = str(datetime.now())
         print("[slackbot][{date}][INFO][bot]: Finish the mizuyari".format(date=date))
@@ -35,6 +39,15 @@ class MizuyariThread(Thread):
 
 
 @respond_to('mizuyari')
+def mizuyari(message):
+    date = str(datetime.now())
+    name = message.user["name"]
+    body = message.body["text"]
+    print("[slackbot][{date}][INFO][{name}]: {body}".format(date=date, name=name, body=body))
+    mizuyariThread = MizuyariThread(message)
+    mizuyariThread.start()
+
+@respond_to('水やり')
 def mizuyari(message):
     date = str(datetime.now())
     name = message.user["name"]
