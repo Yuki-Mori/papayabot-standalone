@@ -7,7 +7,7 @@ from datetime import datetime
 from plugins import device
 import time
 
-timecount = 1
+timecount = 3
 
 class MizuyariThread(Thread):
     __count = 0
