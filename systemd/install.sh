@@ -2,4 +2,4 @@
 
 python3 envmaker.py
 mv env /etc/sysconfig/sa-papayabotd
-ln -s ./sa-papayabotd.service /etc/systemd/system
+cp ./sa-papayabotd.service /etc/systemd/system/
