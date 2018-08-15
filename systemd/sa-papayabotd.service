@@ -1,0 +1,14 @@
+[Unit]
+Description=Standalone Papaya Bot
+After=syslog.target network.target remote-fs.target nss-lookup.target
+
+[Service]
+#:TODO
+EnvironmentFile=/etc/sysconfig/sa-papayabotd
+WorkingDirectory=/home/pi/pluslab/papaya/papayabot-standalone
+ExecStart=/usr/bin/python3 /home/pi/pluslab/papaya/papayabot-standalone/run.py
+Restart=always
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
